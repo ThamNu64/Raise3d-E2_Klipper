@@ -1,0 +1,45 @@
+# =====================================================================
+# TOOLHEAD 1 (RECHTS) - Mellow FLY SHT36 V3 (RP2040)
+# =====================================================================
+
+[mcu T1]
+canbus_uuid: YYYYYYYYYYYY  # Hier die UUID des 2. SHT36 Boards eintragen
+
+# --- STEPPER EXTRUDER 1 ---
+[extruder1]
+step_pin: T1:gpio7
+dir_pin: T1:gpio6
+enable_pin: !T1:gpio14
+microsteps: 16
+rotation_distance: 5.7
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: T1:gpio23
+sensor_type: EPCOS 100K B57560G104+
+sensor_pin: T1:gpio27
+min_temp: 0
+max_temp: 300
+max_extrude_cross_section: 5
+
+[tmc2209 extruder1]
+uart_pin: T1:gpio15
+run_current: 0.550
+stealthchop_threshold: 0
+
+# --- LÜFTER T1 ---
+[heater_fan hotend_fan_T1]
+pin: T1:gpio13
+heater: extruder1
+heater_temp: 50.0
+
+[fan_generic fan_T1]
+pin: T1:gpio24
+
+# --- NEOPIXEL LED T1 ---
+[neopixel led_T1]
+pin: T1:gpio26
+chain_count: 3
+color_order: GRB
+initial_RED: 1.0
+initial_GREEN: 0.0
+initial_BLUE: 0.0
